@@ -1,5 +1,4 @@
 #!/usr/bin/python
-import pytest
 import httplib
 import unittest
 
