@@ -36,7 +36,7 @@ Implement a Web server in the programming language of your choice. Libraries for
 
 ## Resources ##
 
-* http://www.ietf.org/rfc/rfc2616.txt
+* http://www.w3.org/Protocols/rfc2616/rfc2616.html
 * http://www.kegel.com/c10k.html
 * http://www.aosabook.org/en/nginx.html
 * http://www.slideshare.net/joshzhu/nginx-internals
