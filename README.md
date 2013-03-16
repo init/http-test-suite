@@ -30,7 +30,7 @@ Implement a Web server in the programming language of your choice. Libraries for
 
 ## Success criteria ##
 
-* Must pass test suite
+* Must pass test suite: `./httptest.py`
 * `http://localhost/httptest/wikipedia_russia.html` must been shown correctly in browser
 * **Bonus:** Lowest-latency response (tested using `ab`, ApacheBench) in the following fashion: `ab -n 50000 -c 100 -r http://localhost:8080/`
 
