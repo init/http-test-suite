@@ -1,13 +1,16 @@
 #!/usr/bin/env python
 
+import socket
 import httplib
 import unittest
 
 class HttpServer(unittest.TestCase):
+  host = "localhost"
+  port = 40080
   conn = None
 
   def setUp(self):
-    self.conn = httplib.HTTPConnection("localhost", 80, timeout=10)
+    self.conn = httplib.HTTPConnection(self.host, self.port, timeout=10)
 
   def tearDown(self):
     self.conn.close()
@@ -129,7 +132,12 @@ class HttpServer(unittest.TestCase):
     length = r.getheader("Content-Length")
     if int(r.status) == 200:
       self.assertEqual(int(length), 38)
-      self.assertEqual(len(data), 0)
+      s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+      s.connect((self.host, self.port))
+      s.send("HEAD /httptest/dir2/page.html HTTP/1.0\r\n\r\n")
+      data = s.recv(1000)
+      body = data.split("\r\n\r\n")[1];
+      self.assertEqual(len(body), 0)
     else:
       self.assertIn(int(r.status), (400,405))
 
