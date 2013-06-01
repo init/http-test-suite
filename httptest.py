@@ -187,7 +187,6 @@ class HttpServer(unittest.TestCase):
     self.assertEqual(int(r.status), 200)
     self.assertEqual(int(length), 268381)
     self.assertEqual(len(data), 268381)
-    self.assertEqual(ctype, "application/x-javascript")
     self.assertIn(ctype, ("application/x-javascript", "application/javascript", "text/javascript"))
 
   def test_filetype_jpg(self):
