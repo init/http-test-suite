@@ -1,7 +1,7 @@
 Web server test suite
 =====================
 
-Implement a Web server in the programming language of your choice. Libraries for helping manage TCP socket connections *may* be used. Libraries that implement any part of HTTP *must not* be used.
+Implement a Web server in the programming language of your choice. Libraries for helping manage TCP socket connections *may* be used (libevent allowed). Libraries that implement any part of HTTP or multiprocessing model *must not* be used.
 
 ## Requirements ##
 
