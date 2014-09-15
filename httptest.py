@@ -79,7 +79,7 @@ class HttpServer(unittest.TestCase):
 
   def test_file_with_spaces(self):
     """filename with spaces"""
-    self.conn.request("GET", "/httptest/space%20in name.txt")
+    self.conn.request("GET", "/httptest/space%20in%20name.txt")
     r = self.conn.getresponse()
     data = r.read()
     length = r.getheader("Content-Length")
