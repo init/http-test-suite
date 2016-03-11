@@ -15,6 +15,13 @@ class HttpServer(unittest.TestCase):
   def tearDown(self):
     self.conn.close()
 
+  def test_empty_request(self):
+    """ Send bad http headers """
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((self.host, self.port))
+    s.sendall("\n")
+    s.close()
+
   def test_server_header(self):
     """Server header exists"""
     self.conn.request("GET", "/httptest/")
