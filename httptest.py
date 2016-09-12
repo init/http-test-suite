@@ -124,6 +124,16 @@ class HttpServer(unittest.TestCase):
     data = r.read()
     self.assertIn(int(r.status), (400, 403, 404))
 
+  def test_file_with_dot_in_name(self):
+    """file with two dots in name"""
+    self.conn.request("GET", "/httptest/text..txt")
+    r = self.conn.getresponse()
+    data = r.read()
+    length = r.getheader("Content-Length")
+    self.assertEqual(int(r.status), 200)
+    self.assertIn("hello", data)
+    self.assertEqual(int(length), 5)
+
   def test_post_method(self):
     """post method forbidden"""
     self.conn.request("POST", "/httptest/dir2/page.html")
