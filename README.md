@@ -6,7 +6,7 @@ Implement a Web server in the programming language of your choice. Libraries for
 ## Requirements ##
 
 * Respond to `GET` with status code in `{200,404}`
-* **Bonus:** Respond to `HEAD` with status code in `{200,404}`
+* Respond to `HEAD` with status code in `{200,404}`
 * Respond to all other request methods with status code `405`
 * Directory index file name `index.html`
 * Respond to requests for `/<file>.html` with the contents of `DOCUMENT_ROOT/<file>.html`
@@ -20,19 +20,42 @@ Implement a Web server in the programming language of your choice. Libraries for
   * `Content-Type`
 * Respond with correct `Content-Type` for `.html, .css, js, jpg, .jpeg, .png, .gif, .swf`
 * Respond to percent-encoding URLs
-* No security vulnerabilities!
-* **Bonus:** Correctly serve a 2GB+ file
+* Correctly serve a 2GB+ files
+* No security vulnerabilities
 
 ## Testing environment ##
 
-* `httptest` folder from `http-test-suite` repository should be copied into `DOCUMENT_ROOT`
-* Your HTTP server should listen `localhost:80`
+* Put `Dockerfile` to web server repository root
+* Prepare docker container to run tests:
+  * Read config file `/etc/httpd.conf`
+  * Expose port 80
+
+Config file spec:
+```
+listen 80         # port number
+cpu_limit 4       # maximum CPU count to use (for non-blocking servers)
+thread_limit 256  # maximum simultaneous connections (for blocking servers)
+document_root /var/www/html
+```
+
+Run tests:
+```
+git clone https://github.com/init/http-test-suite.git
+cd http-test-suite
+
+docker build -t bykov-httpd https://github.com/init/httpd.git
+docker run -p 80:80 -v ./httpd.conf:/etc/httpd.conf:ro -v ./:/var/www/html:ro --name bykov-httpd -t bykov-httpd
+
+./httptest.py
+```
 
 ## Success criteria ##
 
-* Must pass test suite: `./httptest.py`
-* `http://localhost/httptest/wikipedia_russia.html` must been shown correctly in browser
-* **Bonus:** Lowest-latency response (tested using `ab`, ApacheBench) in the following fashion: `ab -n 50000 -c 100 -r http://localhost:8080/`
+* Must pass test suite
+* Must pass load test
+* Must use all CPUs
+* Perfomance must inrease with increasing number of CPUs
+* No errors allowed
 
 ## Resources ##
 
