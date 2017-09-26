@@ -16,10 +16,17 @@ class HttpServer(unittest.TestCase):
     self.conn.close()
 
   def test_empty_request(self):
-    """ Send bad http headers """
+    """ Send empty line """
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((self.host, self.port))
     s.sendall("\n")
+    s.close()
+
+  def test_request_without_two_newlines(self):
+    """ Send GET without to newlines """
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((self.host, self.port))
+    s.sendall("GET / HTTP/1.1\n")
     s.close()
 
   def test_server_header(self):
