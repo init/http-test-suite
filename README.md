@@ -55,6 +55,7 @@ docker run -p 80:80 -v ./httpd.conf:/etc/httpd.conf:ro -v ./:/var/www/html:ro --
 * Must pass load test
 * Must use all CPUs
 * Perfomance must inrease with increasing number of CPUs
+* Perfomance must be comparable with nginx (same order of magnitude)
 * No errors allowed
 
 ## Resources ##

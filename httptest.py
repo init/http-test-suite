@@ -1,13 +1,21 @@
 #!/usr/bin/env python
 
 import re
+import sys
 import socket
 import httplib
 import unittest
 
+arg_host = "localhost"
+arg_port = 80
+if len(sys.argv) > 1:
+  arg_host = sys.argv[1]
+if len(sys.argv) > 2:
+  arg_port = int(sys.argv[2])
+
 class HttpServer(unittest.TestCase):
-  host = "localhost"
-  port = 80
+  host = arg_host
+  port = arg_port
 
   def setUp(self):
     self.conn = httplib.HTTPConnection(self.host, self.port, timeout=10)
