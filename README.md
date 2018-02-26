@@ -5,8 +5,8 @@ Implement a Web server in the programming language of your choice. Libraries for
 
 ## Requirements ##
 
-* Respond to `GET` with status code in `{200,404}`
-* Respond to `HEAD` with status code in `{200,404}`
+* Respond to `GET` with status code in `{200,404,403}`
+* Respond to `HEAD` with status code in `{200,404,403}`
 * Respond to all other request methods with status code `405`
 * Directory index file name `index.html`
 * Respond to requests for `/<file>.html` with the contents of `DOCUMENT_ROOT/<file>.html`
