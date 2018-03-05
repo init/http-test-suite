@@ -32,7 +32,6 @@ Implement a Web server in the programming language of your choice. Libraries for
 
 Config file spec:
 ```
-listen 80         # port number
 cpu_limit 4       # maximum CPU count to use (for non-blocking servers)
 thread_limit 256  # maximum simultaneous connections (for blocking servers)
 document_root /var/www/html
