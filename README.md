@@ -44,7 +44,7 @@ git clone https://github.com/init/http-test-suite.git
 cd http-test-suite
 
 docker build -t bykov-httpd https://github.com/init/httpd.git
-docker run -p 80:80 -v /etc/httpd.conf:/etc/httpd.conf:ro -v /var/www/http-test-suite:/var/www/http-test-suite:ro --name bykov-httpd -t bykov-httpd
+docker run -p 80:80 -v /etc/httpd.conf:/etc/httpd.conf:ro -v /var/www/html:/var/www/html:ro --name bykov-httpd -t bykov-httpd
 
 ./httptest.py
 ```
