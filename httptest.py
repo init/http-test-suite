@@ -178,9 +178,9 @@ class HttpServer(unittest.TestCase):
     h = {}
     for k,v in enumerate(headers):
       (name, value) = re.split('\s*:\s*', v, 1)
-      h[name] = value
+      h[name.lower()] = value
     if (int(code) == 200):
-      self.assertEqual(int(h['Content-Length']), 38)
+      self.assertEqual(int(h['content-length']), 38)
       self.assertEqual(len(body), 0)
     else:
       self.assertIn(int(code), (400,405))
