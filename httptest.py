@@ -182,7 +182,7 @@ class HttpServer(unittest.TestCase):
       name, value = re.split(b'\\s*:\\s*', v, 1)
       h[name.lower()] = value
     if int(code) == 200:
-      self.assertEqual(int(h[b'content-Length']), 38)
+      self.assertEqual(int(h[b"content-length"]), 38)
       self.assertEqual(len(body), 0)
     else:
       self.assertIn(int(code), (400, 405))
