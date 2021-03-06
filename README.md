@@ -1,7 +1,7 @@
 Web server test suite
 =====================
 
-Implement a Web server in the programming language of your choice. Libraries for helping manage TCP socket connections *may* be used (libevent allowed). Libraries that implement any part of HTTP or multiprocessing model *must not* be used. Languages and platforms implementing hidden multithreading (Go, Node.js) are not allowed.
+Implement a Web server in the programming language of your choice. Libraries for helping manage TCP socket connections *may* be used (libevent for example). Libraries that implement any part of HTTP or multiprocessing model *must not* be used. Languages and platforms implementing hidden multithreading (Go, Node.js) are not allowed.
 
 ## Requirements ##
 
@@ -53,7 +53,7 @@ docker run -p 80:80 -v /etc/httpd.conf:/etc/httpd.conf:ro -v /var/www/html:/var/
 * Must pass test suite
 * Must pass load test
 * Must use all CPUs
-* Perfomance must inrease with increasing number of CPUs
+* Perfomance must increase with increasing number of CPUs
 * Perfomance must be comparable with nginx (same order of magnitude)
 * No errors allowed
 
