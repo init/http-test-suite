@@ -45,11 +45,3 @@ docker run -p 80:80 -v /etc/httpd.conf:/etc/httpd.conf:ro -v /var/www/html:/var/
 
 ./httptest.py
 ```
-
-## Resources ##
-
-* http://www.w3.org/Protocols/rfc2616/rfc2616.html
-* http://www.kegel.com/c10k.html
-* http://www.aosabook.org/en/nginx.html
-* http://www.slideshare.net/joshzhu/nginx-internals
-
